@@ -1,5 +1,5 @@
 /**  
- * Array  
+ * ARRAY  
  */
 
 /**
@@ -71,10 +71,10 @@ function Array(){
     }
 }
 
-const array = new Array();
-console.log(array.traverse());
-console.log(array.push(1,2,3,4));
-console.log(array.delete(3));
-console.log(array)
+// const array = new Array();
+// console.log(array.traverse());
+// console.log(array.push(1,2,3,4));
+// console.log(array.delete(3));
+// console.log(array)
 
 

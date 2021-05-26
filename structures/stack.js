@@ -1,5 +1,5 @@
 /**
- *STACK 
+ * STACK 
  */
    
 /**
@@ -18,15 +18,16 @@
  * 3.top() or peek() 
  * 4.push(item) 
  * 5.pop() 
+ * 6.full()
  */
 
 
 
-function Stack() {
+function Stack(MAX = 100) {
     // initial stack count and elements
     this.count = 0;
     this.elements = {}
-
+    this.MAX = MAX
     this.empty = function(){
         /** 
          * @return {Boolean} whether the stack is empty.
@@ -54,6 +55,10 @@ function Stack() {
          * @return {Any} Adds the element ‘item’ at the top of the stack.
          * Time Complexity : O(1).
          */
+        if(this.full()){
+            console.error('Stack size exceeded.')
+            return;
+        }
         this.elements[this.count] = item
         this.count ++
         return item
@@ -69,6 +74,13 @@ function Stack() {
         delete this.elements[this.count - 1]
         this.count --
         return item
+    }
+    this.full = function(){
+        /**
+         * @return {Boolean} full
+         * Checks if the stack is full or not
+         */
+        return (this.count == this.MAX)
     }
 } 
 
@@ -89,5 +101,11 @@ function Stack() {
 // console.log(stack)
 // console.log(stack.size())
 // console.log(stack.empty())
+
+// for(let i=0; i< 13; i++){
+//     console.log(stack.push(i))
+//     console.log(stack)
+//     console.log(stack.full())
+// }
 
 
