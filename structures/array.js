@@ -24,7 +24,8 @@ function Array(){
     this.size = 0
 
     this.traverse = function(){
-        /**traverse description.
+        /*
+         * traverse description.
          * @return {Any} return all the array elements.
          */
         if(this.size == 0) return null

@@ -20,11 +20,21 @@
  * 9.subset()
  */
 
+/**
+ * 
+ * @param {Array} elements 
+ * @param {Number} MAX 
+ * 
+ */
 
-function Set(MAX = 100){
+function Set(elements = new Array(),MAX = 100){
     this.MAX = MAX
-    this.elements = []
-    
+    this.elements = elements.reduce( ( accumulator, entry) =>{
+        if( accumulator.indexOf(entry) === -1){
+            accumulator.push(entry)
+        }
+        return accumulator;
+    },[])
     this.empty = function(){
         /**
          * @return {Boolean} empty.
@@ -34,15 +44,15 @@ function Set(MAX = 100){
     }
     this.size = function(){
         /**
-         * @return {Number} size
+         * @return {Number} size.
          * returns the size of the set.
          */
         return this.elements.length
     }
     this.add = function(item){
         /**
-         * @return {Any} item 
-         * returns the added item
+         * @return {Any} item.
+         * returns the added item.
          */
 
         if(this.has(item)) {
@@ -55,19 +65,32 @@ function Set(MAX = 100){
         /**
          * @param {Any} item
          * @return {Boolean} has item.
-         * returns whether or not the set contains the item
+         * returns whether or not the set contains the item.
          */
 
         return  this.elements.indexOf(item) == -1
     }
+    this.union = function(set){
+        /**
+         * @param {Set} set.
+         * @return {Array} 
+         * returns union of sets
+         */
+        let unionSet = new Set(set.elements.concat(this.elements))
+        return unionSet.elements
+    }
 }
-
-let set = new Set()
-
+let set3 = new Set()
+let set = new Set([1,2,3,4,3])
+let set2 =  new Set([5,3,2,2])
 console.log(set)
 console.log(set.add(1))
 console.log(set.add(3))
 console.log(set.add(1))
 console.log(set.size())
 console.log(set)
+console.log(set.union(set2))
+console.log(set)
+console.log(set3)
+
 
