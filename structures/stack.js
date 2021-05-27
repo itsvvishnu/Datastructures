@@ -28,33 +28,33 @@ function Stack(MAX = 100) {
     this.count = 0;
     this.elements = {}
     this.MAX = MAX
+    /** 
+     * @return {Boolean} whether the stack is empty.
+     * Time Complexity : O(1).
+     */
     this.empty = function(){
-        /** 
-         * @return {Boolean} whether the stack is empty.
-         * Time Complexity : O(1).
-         */
         return this.count <=0
     }
+    /**
+     * @return {Number} the size of the stack.
+     * Time Complexity : O(1).
+     */
     this.size = function(){
-        /**
-         * @return {Number} the size of the stack.
-         * Time Complexity : O(1).
-         */
         return this.count
     }
+    /** 
+     * @return {Object} a reference to the top most element of the stack.
+     * Time Complexity : O(1).
+     */
     this.top = function(){
-        /** 
-         * @return {Object} a reference to the top most element of the stack.
-         * Time Complexity : O(1).
-         */
         return this.elements[this.count-1]
     }
+    /** 
+     * @param {Any} item
+     * @return {Any} Adds the element ‘item’ at the top of the stack.
+     * Time Complexity : O(1).
+     */
     this.push = function(item){
-        /** 
-         * @param {Any} item
-         * @return {Any} Adds the element ‘item’ at the top of the stack.
-         * Time Complexity : O(1).
-         */
         if(this.full()){
             console.error('Stack size exceeded.')
             return;
@@ -63,23 +63,23 @@ function Stack(MAX = 100) {
         this.count ++
         return item
     }
+    /**
+     * @return {Any} item
+     * Deletes the top most element of the stack.
+     * Time Complexity : O(1)
+     */
     this.pop = function(){
-        /**
-         * @return {Any} item
-         * Deletes the top most element of the stack.
-         * Time Complexity : O(1)
-         */
         if (this.count <=0 ) return null;
         let item = this.elements[this.count - 1]
         delete this.elements[this.count - 1]
         this.count --
         return item
     }
+    /**
+     * @return {Boolean} full
+     * Checks if the stack is full or not
+     */
     this.full = function(){
-        /**
-         * @return {Boolean} full
-         * Checks if the stack is full or not
-         */
         return (this.count == this.MAX)
     }
 } 

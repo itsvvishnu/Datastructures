@@ -23,11 +23,11 @@ function Array(){
     this.elements = {}
     this.size = 0
 
+    /*
+     * traverse description.
+     * @return {Any} return all the array elements.
+     */
     this.traverse = function(){
-        /*
-         * traverse description.
-         * @return {Any} return all the array elements.
-         */
         if(this.size == 0) return null
         return(
             Object.keys(this.elements).map(function(key){
@@ -36,27 +36,26 @@ function Array(){
             }.bind(this))
         )
     }
+    /**
+     * push description.
+     * @param {Any} items 
+     * inserts items to the array.
+     * @return {Any} all items.
+     */
     this.push = function(...items){
-        /**
-         * push description.
-         * @param {Any} items 
-         * inserts items to the array.
-         * @return {Any} all items.
-         */
         for(let i=0; i<items.length;i++){
             this.size++
             this.elements[i] = items[i]
         }
         return this.elements
     }
+    /**
+     * delete description.
+     * @param {Number} index
+     * Deletes an element at the given index.
+     * @return {Any} removed item
+     */
     this.delete = function(index){
-        /**
-         * delete description.
-         * Deletes an element at the given index.
-         * @param {Number} index.
-         * @return {Any} removed item
-         */
-        
         if(index > this.size - 1 || index < 0 ) return null
         let item = this.elements[index]
         delete this.elements[index];

@@ -22,9 +22,10 @@
 
 /**
  * 
- * @param {Array} elements 
+ * @param {Array} elements.
+ * Array of elements to be added to the set. 
  * @param {Number} MAX 
- * 
+ * Maximum size of the set.
  */
 
 function Set(elements = new Array(),MAX = 100){
@@ -35,47 +36,47 @@ function Set(elements = new Array(),MAX = 100){
         }
         return accumulator;
     },[])
+    /**
+     * @return {Boolean} empty.
+     * returns if the set is empty or not.
+     */
     this.empty = function(){
-        /**
-         * @return {Boolean} empty.
-         * returns if the set is empty or not.
-         */
         return this.elements.length >=0
     }
+    /**
+     * @return {Number} size.
+     * returns the size of the set.
+     */
     this.size = function(){
-        /**
-         * @return {Number} size.
-         * returns the size of the set.
-         */
         return this.elements.length
     }
+    /**
+     * @return {Any} item.
+     * returns the added item.
+     */
     this.add = function(item){
-        /**
-         * @return {Any} item.
-         * returns the added item.
-         */
-
         if(this.has(item)) {
             this.elements.push(item)
             return item
         }
         else return item
     }
+    /**
+     * @param {Any} item
+     * The element to be checked if it already exists.
+     * @return {Boolean} has item.
+     * returns whether or not the set contains the item.
+     */
     this.has = function(item){
-        /**
-         * @param {Any} item
-         * @return {Boolean} has item.
-         * returns whether or not the set contains the item.
-         */
-
         return  this.elements.indexOf(item) == -1
     }
+    /**
+     * @param {Set} set
+     * The set to perform union operation with current set.
+     * @return {Array} 
+     * returns union of sets
+     */
     this.union = function(set){
-        /**
-         * @param {Set} set.
-         * @return {Array} 
-         * returns union of sets
-         */
         let unionSet = new Set(set.elements.concat(this.elements))
         return unionSet.elements
     }
@@ -92,5 +93,4 @@ console.log(set)
 console.log(set.union(set2))
 console.log(set)
 console.log(set3)
-
 
