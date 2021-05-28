@@ -153,7 +153,7 @@ function Set(elements = new Array(),MAX = 100){
      */
     this.difference = function(set){
         let intersection = this.intersection(set)
-        let diff 
+        let diff = [...this.elements]
         for( let i=0; i<intersection.length; i++){
             diff = this.delete(intersection[i],false,diff)
         }
