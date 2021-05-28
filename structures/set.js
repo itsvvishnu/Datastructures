@@ -159,6 +159,24 @@ function Set(elements = new Array(),MAX = 100){
         }
         return diff
     }
+    this.subset = function(set){
+        /**
+         * If length is greater than current set,
+         * there will be one extra item in the set passed in.
+         * there for it cannot be a subset.
+         */
+        if(set.size() > this.size()){
+            return false
+        }
+        let isSubset = true
+        for( let i =0; i<set.size(); i++){
+            if(this.has(set.elements[i])){
+                isSubset = false
+                break;
+            }
+        }
+        return isSubset
+    }
 }
 let set3 = new Set()
 let set = new Set([1,2,3,4,3])
@@ -182,6 +200,7 @@ let set4 = new Set(dyArray)
 console.log(set4.difference(set2))
 console.log('set 4',set4.full())
 console.log('set 2',set2)
+console.log(set.subset(set3))
 
 
 
