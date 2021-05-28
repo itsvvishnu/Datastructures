@@ -12,7 +12,7 @@
  * 1.empty() 
  * 2.size() 
  * 3.add(item) 
- * 4.delete() 
+ * 4.delete(item) 
  * 5.full()
  * 6.union()
  * 7.intersection()
@@ -30,9 +30,15 @@
 
 function Set(elements = new Array(),MAX = 100){
     this.MAX = MAX
-    this.elements = elements.reduce( ( accumulator, entry) =>{
+    this.elements = elements.reduce( ( accumulator, entry,index = 0) =>{
         if( accumulator.indexOf(entry) === -1){
+            let indexPointer =  index;
+            if(indexPointer >= MAX){
+                console.error('Maximum size exceeded!.')
+                return accumulator;
+            }
             accumulator.push(entry)
+            indexPointer ++
         }
         return accumulator;
     },[])
@@ -51,10 +57,21 @@ function Set(elements = new Array(),MAX = 100){
         return this.elements.length
     }
     /**
+     * 
+     * @returns {Boolean} true if the set reached maximum capacity.
+     */
+    this.full = function(){
+        return this.size() >= this.MAX
+    }
+    /**
      * @return {Any} item.
      * returns the added item.
      */
     this.add = function(item){
+        if(this.full()){
+            console.error('Maximum size exceeded!.')
+            return this.elements
+        }
         if(this.has(item)) {
             this.elements.push(item)
             return item
@@ -80,17 +97,91 @@ function Set(elements = new Array(),MAX = 100){
         let unionSet = new Set(set.elements.concat(this.elements))
         return unionSet.elements
     }
+    /**
+     * @param {Set} set
+     * Set to perform intersection operation with current set.
+     * @return {Array}
+     * Intersection of sets.
+     */
+    this.intersection = function(set){
+        let setToLoop = [] , setToPeek = []
+        /**
+         * Loop through the array which is shorter
+         */
+        set.elements.length >= this.size() 
+        ? (setToLoop = this.elements , setToPeek = set.elements ) 
+        : (setToLoop = set.elements, setToPeek = this.elements)
+        return setToLoop.reduce( (accumulator,setEntry) =>{
+            /**
+             * if the element exists on larger array,
+             * this element exists on both sets.
+             */
+            if(setToPeek.indexOf(setEntry) !== -1){
+                accumulator.push(setEntry)
+            }
+            return accumulator;
+        },[])
+    }
+    /**
+     * 
+     * @param {Any} item to be removed.
+     * @param {Boolean} mutate
+     * whether or not to mutate set.
+     * @param {Array} copy 
+     * Keeps a copy of elements after performing delete 
+     * operation on current set.
+     * @returns {Any} removed item.
+     * @returns {Array} if mutate is set to false, an array of remaining 
+     * elements are returned.
+     */
+    this.delete = function(item,mutate=true,copy = [...this.elements]){
+        if(!this.has(item)){
+            if(mutate){
+                this.elements.splice(this.elements.indexOf(item),1)
+                return item;
+            }
+            else{
+                copy.splice(this.elements.indexOf(item),1)
+                return copy
+            }
+        }else return null
+    }
+    /**
+     * 
+     * @param {Set} set.
+     * @return {Array} difference elements. 
+     */
+    this.difference = function(set){
+        let intersection = this.intersection(set)
+        let diff 
+        for( let i=0; i<intersection.length; i++){
+            diff = this.delete(intersection[i],false,diff)
+        }
+        return diff
+    }
 }
 let set3 = new Set()
 let set = new Set([1,2,3,4,3])
 let set2 =  new Set([5,3,2,2])
+// console.log(set)
+// console.log(set.add(1))
+// console.log(set.add(3))
+// console.log(set.add(1))
+// console.log(set.size())
+// console.log(set)
+console.log(set2.intersection(set))
 console.log(set)
-console.log(set.add(1))
-console.log(set.add(3))
-console.log(set.add(1))
-console.log(set.size())
-console.log(set)
-console.log(set.union(set2))
-console.log(set)
-console.log(set3)
+console.log(set2)
+
+let dyArray = []
+for (let i=0; i< 10; i++){
+  dyArray.push(i)
+}
+
+let set4 = new Set(dyArray)
+console.log(set4.difference(set2))
+console.log('set 4',set4.full())
+console.log('set 2',set2)
+
+
 

@@ -64,7 +64,7 @@ function Stack(MAX = 100) {
         return item
     }
     /**
-     * @return {Any} item
+     * @return {Any} 
      * Deletes the top most element of the stack.
      * Time Complexity : O(1)
      */
@@ -76,7 +76,7 @@ function Stack(MAX = 100) {
         return item
     }
     /**
-     * @return {Boolean} full
+     * @return {Boolean}
      * Checks if the stack is full or not
      */
     this.full = function(){
