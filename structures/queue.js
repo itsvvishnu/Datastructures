@@ -34,6 +34,9 @@ class Queue{
             case 'f':console.error('Maximum queue size exceeded!')
             break;
             case 'e':console.error('Queue is empty!')
+            break;
+            default:console.log('An unknown error occured.!')
+            break;
         }
         
     }
@@ -114,7 +117,7 @@ class Queue{
         if(itemIndex === this.head){
             this.dequeue()
         }
-        
+
     }
 }
 
