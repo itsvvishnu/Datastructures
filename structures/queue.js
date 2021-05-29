@@ -38,7 +38,14 @@ class Queue{
             default:console.log('An unknown error occured.!')
             break;
         }
-        
+    }
+    static middleIndex(size,head){
+        if(size%2 ==0){
+            return ( size/2 ) + head - 1
+        }
+        else{
+            return ( ( size+1 ) / 2 ) - 1 + head
+        }
     }
     set initialize(elements){
         if(elements.length == 0 ) return;
@@ -79,11 +86,7 @@ class Queue{
         return this.elements
     }
     display(){
-        let array = []
-        for(let key in this.elements){
-            array.push(this.elements[key])
-        }
-        return array
+        return Object.assign({},this.elements)
     }
     dequeue(){
         if(this.size == 0){
@@ -107,54 +110,94 @@ class Queue{
         return false
     }
     remove(item){
+        if(this.isEmpty) return
         let itemIndex = null
+        let middle = Queue.middleIndex(this.size,this.head)
         for(let key in this.elements){
             if(this.elements[key] === item ){
                 itemIndex = key 
                 break;
             }
         }
+        console.log(itemIndex)
         if(itemIndex === this.head){
             this.dequeue()
         }
-
+        if(itemIndex == this.tail -1){
+            delete this.elements[itemIndex]
+            this.tail --
+        }
+        if(itemIndex <= middle && itemIndex!=null){
+            //shift head
+            this.shiftHead(itemIndex)
+        }
+        else if(itemIndex > middle){
+            //shift tail
+            this.shiftTail(itemIndex)
+        }
+        return item
+    }
+    shiftHead(index){
+        console.log('in',index)
+        for(let i= this.head; i<index; i++){
+           this.elements[index - i] = this.elements[index - i  - 1]
+           console.log(this.display())
+        }
+        delete this.elements[this.head]
+        this.head ++
+    }
+    shiftTail(index){
+        for(let i=parseInt(index); i<this.size - 1; i++){
+            this.elements[i] = this.elements[i + 1]
+        }
+        delete this.elements[this.size -1]
+        this.tail --
     }
 }
 
-let q = new Queue([1,3,42,52,3,3,323],5)
+let arr = []
+for (let i=0;i<15;i++){
+    arr.push(i)
+}
+let q = new Queue(arr,100)
 console.log(q)
 console.log(q.display())
-console.log(q.contains(3))
-console.log(q.enqueue(5))
-console.log(q.peek)
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log('enqueue',q.enqueue(5))
-console.log('enqueue',q.enqueue(78))
+// console.log(q.contains(34))
+// console.log(q.enqueue(5))
+// console.log('middle',Queue.middleIndex(q.size))
+console.log('remove',q.remove(3))
 console.log(q.display())
-console.log(q.dequeue())
+console.log('remove',q.remove(8))
 console.log(q.display())
-console.log(q.dequeue())
-console.log(q.display())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log(q.dequeue())
-console.log(q)
-console.log('enqueue',q.enqueue(78))
+// console.log(q.peek)
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log('enqueue',q.enqueue(5))
+// console.log('enqueue',q.enqueue(78))
+// console.log(q.display())
+// console.log(q.dequeue())
+// console.log(q.display())
+// console.log(q.dequeue())
+// console.log(q.display())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log(q.dequeue())
+// console.log(q)
+// console.log('enqueue',q.enqueue(78))
 console.log(q)
 
 
