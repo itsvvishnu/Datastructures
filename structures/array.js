@@ -19,7 +19,7 @@
  * 5.Update
  */
 
-function Array(){
+export default function Array(){
     this.elements = {}
     this.size = 0
 
@@ -70,11 +70,5 @@ function Array(){
         this.size --
     }
 }
-
-// const array = new Array();
-// console.log(array.traverse());
-// console.log(array.push(1,2,3,4));
-// console.log(array.delete(3));
-// console.log(array)
 
 

@@ -23,7 +23,7 @@
 
 
 
-function Stack(MAX = 100) {
+export function Stack(MAX = 100) {
     // initial stack count and elements
     this.count = 0;
     this.elements = {}
@@ -82,30 +82,6 @@ function Stack(MAX = 100) {
     this.full = function(){
         return (this.count == this.MAX)
     }
-} 
-
-// let stack = new Stack();
-// stack.push(12);
-// stack.push(123);
-// console.log(stack)
-// console.log(stack.pop())
-// console.log(stack)
-// console.log(stack.size())
-// console.log(stack.pop())
-// console.log(stack.empty())
-// console.log(stack.size())
-// console.log(stack.pop())
-// console.log(stack.pop())
-// console.log(stack)
-// stack.push(12233);
-// console.log(stack)
-// console.log(stack.size())
-// console.log(stack.empty())
-
-// for(let i=0; i< 13; i++){
-//     console.log(stack.push(i))
-//     console.log(stack)
-//     console.log(stack.full())
-// }
+}
 
 

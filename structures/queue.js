@@ -18,7 +18,7 @@
  */
 
 
-class Queue{
+export class Queue{
     /**
      * @param {Number} _MAX maximum size of the queue.
      * @param {Array} _elements elements to enqueue.
@@ -138,10 +138,8 @@ class Queue{
         return item
     }
     shiftHead(index){
-        console.log('in',index)
-        for(let i= this.head; i<index; i++){
-           this.elements[index - i] = this.elements[index - i  - 1]
-           console.log(this.display())
+        for(let i = parseInt(index); i>= this.head; i--){
+           this.elements[i] = this.elements[i - 1]
         }
         delete this.elements[this.head]
         this.head ++
@@ -154,52 +152,3 @@ class Queue{
         this.tail --
     }
 }
-
-let arr = []
-for (let i=0;i<15;i++){
-    arr.push(i)
-}
-let q = new Queue(arr,100)
-console.log(q)
-console.log(q.display())
-// console.log(q.contains(34))
-// console.log(q.enqueue(5))
-// console.log('middle',Queue.middleIndex(q.size))
-console.log('remove',q.remove(3))
-console.log(q.display())
-console.log('remove',q.remove(8))
-console.log(q.display())
-// console.log(q.peek)
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log('enqueue',q.enqueue(5))
-// console.log('enqueue',q.enqueue(78))
-// console.log(q.display())
-// console.log(q.dequeue())
-// console.log(q.display())
-// console.log(q.dequeue())
-// console.log(q.display())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log(q.dequeue())
-// console.log(q)
-// console.log('enqueue',q.enqueue(78))
-console.log(q)
-
-
-
-

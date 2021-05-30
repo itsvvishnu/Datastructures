@@ -28,7 +28,7 @@
  * Maximum size of the set.
  */
 
-function Set(elements = new Array(),MAX = 100){
+export function Set(elements = new Array(),MAX = 100){
     this.MAX = MAX
     this.elements = elements.reduce( ( accumulator, entry,index = 0) =>{
         if( accumulator.indexOf(entry) === -1){
@@ -178,29 +178,6 @@ function Set(elements = new Array(),MAX = 100){
         return isSubset
     }
 }
-// let set3 = new Set()
-// let set = new Set([1,2,3,4,3])
-// let set2 =  new Set([5,3,2,2])
-// console.log(set)
-// console.log(set.add(1))
-// console.log(set.add(3))
-// console.log(set.add(1))
-// console.log(set.size())
-// console.log(set)
-// console.log(set2.intersection(set))
-// console.log(set)
-// console.log(set2)
-
-// let dyArray = []
-// for (let i=0; i< 10; i++){
-//   dyArray.push(i)
-// }
-
-// let set4 = new Set(dyArray)
-// console.log(set4.difference(set2))
-// console.log('set 4',set4.full())
-// console.log('set 2',set2)
-// console.log(set.subset(set3))
 
 
 
