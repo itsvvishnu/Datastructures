@@ -31,7 +31,6 @@ export default function Array(){
         if(this.size == 0) return null
         return(
             Object.keys(this.elements).map(function(key){
-                this.size++
                 return this.elements[key]
             }.bind(this))
         )
