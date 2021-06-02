@@ -27,12 +27,31 @@ export default class LinkedList{
             this.length++
         }
     }
+    delete(element){
+        let currentNode = this.head
+        if(element == this.head.element){
+            this.head = this.head.next
+            this.length --
+        }
+        while(currentNode.next){
+            let prevNode = currentNode
+            currentNode = currentNode.next
+            if(currentNode.element == element){
+                prevNode.next = currentNode.next
+                this.length --
+            }
+        }
+    }
 }
 
 let list = new LinkedList();
 list.add(67)
 list.add(6)
+list.add(623)
+list.add(6424)
+list.add(62256)
 list.add(567)
+list.delete(0)
 console.log(list)
 
 
