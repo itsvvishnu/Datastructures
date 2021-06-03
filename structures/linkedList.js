@@ -5,7 +5,7 @@ class Node{
     }
 }
 
-export default class LinkedList{
+class LinkedList{
     constructor(){
         this.head = null
         this.length = 0
@@ -26,6 +26,7 @@ export default class LinkedList{
             currentNode.next = node
             this.length++
         }
+        return node
     }
     delete(element){
         let currentNode = this.head
@@ -41,8 +42,22 @@ export default class LinkedList{
                 this.length --
             }
         }
+        return element
+    }
+    search(element){
+        let currentNode = this.head
+        if(!currentNode) return false
+        while(currentNode.next){
+            if(currentNode.element === element){
+                return true
+            }
+            currentNode = currentNode.next
+        }
+        return false
     }
 }
+
+export { LinkedList, Node }
 
 let list = new LinkedList();
 list.add(67)
@@ -52,6 +67,7 @@ list.add(6424)
 list.add(62256)
 list.add(567)
 list.delete(0)
+console.log(list.search(6))
 console.log(list)
 
 
