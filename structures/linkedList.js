@@ -6,9 +6,18 @@ class Node{
 }
 
 class LinkedList{
-    constructor(){
+    constructor(..._elements){
         this.head = null
         this.length = 0
+        this.initalize = _elements
+    }
+    set initalize(elements){
+        if(!elements) return null
+        for( let i=0; i<elements.length; i++){
+            this.length ++
+            this.add(elements[i])
+        }
+        return this.head
     }
     get size(){
         return this.length
@@ -55,6 +64,28 @@ class LinkedList{
         }
         return false
     }
+    update(element,value){
+        let currentNode = this.head
+        if(!currentNode) return
+        while(currentNode.next){
+            if(currentNode.element == element){
+                currentNode.element = value
+                return currentNode
+            }
+        }
+    }
+    merge(list){
+        let currentNode = this.head
+        if(this.head == null){
+            this.head = list
+            return list
+        }
+        while(currentNode.next){
+            currentNode = currentNode.next
+        }
+        currentNode.next = list.head
+        return this.head
+    }
 }
 
 export { LinkedList, Node }
@@ -69,5 +100,9 @@ list.add(567)
 list.delete(0)
 console.log(list.search(6))
 console.log(list)
-
+console.log(list.update(67,8))
+let list1 = new LinkedList(1,2,3)
+let list2 = new LinkedList(4,5)
+list1.merge(list2)
+console.log(list1)
 
