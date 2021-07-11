@@ -86,23 +86,27 @@ class LinkedList{
         currentNode.next = list.head
         return this.head
     }
+    sort(){
+        if(this.head = null) return
+        
+    }
 }
 
 export { LinkedList, Node }
 
 let list = new LinkedList();
-list.add(67)
-list.add(6)
-list.add(623)
-list.add(6424)
-list.add(62256)
-list.add(567)
-list.delete(0)
-console.log(list.search(6))
-console.log(list)
-console.log(list.update(67,8))
-let list1 = new LinkedList(1,2,3)
-let list2 = new LinkedList(4,5)
-list1.merge(list2)
-console.log(list1)
+// list.add(67)
+// list.add(6)
+// list.add(623)
+// list.add(6424)
+// list.add(62256)
+// list.add(567)
+// list.delete(0)
+// console.log(list.search(6))
+// console.log(list)
+// console.log(list.update(67,8))
+// let list1 = new LinkedList(1,2,3)
+// let list2 = new LinkedList(4,5)
+// list1.merge(list1)
+// console.log(list1)
 
